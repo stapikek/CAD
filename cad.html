@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE CAD - Онлайн чертилка</title>
+    <link rel="stylesheet" href="cad-styles.css">
+</head>
+<body>
+    <div class="cad-container">
+        <!-- Верхнее меню -->
+        <header class="cad-header">
+            <div class="logo-section">
+                <div class="logo">M</div>
+                <div class="logo-text">FREE CAD</div>
+            </div>
+            <nav class="main-menu">
+                <button class="menu-item">Файл</button>
+                <button class="menu-item">Вид</button>
+                <div class="dropdown">
+                    <button class="menu-item dropdown-toggle">Рисование</button>
+                    <div class="dropdown-menu">
+                        <a href="#" data-tool="line">Отрезок</a>
+                        <a href="#" data-tool="vertical-line">Вертикальная линия</a>
+                        <a href="#" data-tool="horizontal-line">Горизонтальная линия</a>
+                        <a href="#" data-tool="parallel-line">Параллельная линия</a>
+                        <a href="#" data-tool="arc-3-points">Дуга по 3-м точкам</a>
+                        <a href="#" data-tool="arc-2-points">Дуга по 2-м точкам и радиусу</a>
+                        <a href="#" data-tool="circle">Окружность</a>
+                        <a href="#" data-tool="rectangle">Прямоугольник</a>
+                        <a href="#" data-tool="spline">Сплайн</a>
+                        <a href="#" data-tool="hatching">Штриховка</a>
+                        <a href="#" data-tool="arrow">Просто стрелка</a>
+                        <a href="#" data-tool="text">Ввод текста</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="menu-item dropdown-toggle">Редактор</button>
+                    <div class="dropdown-menu">
+                        <a href="#" data-tool="symmetry">Симметрия</a>
+                        <a href="#" data-tool="rotate">Поворот</a>
+                        <a href="#" data-tool="move">Перемещение</a>
+                        <a href="#" data-tool="copy">Копирование</a>
+                        <a href="#" data-tool="trim">Обрезка</a>
+                        <a href="#" data-tool="extend">Удлинение</a>
+                        <a href="#" data-tool="chamfer">Фаска</a>
+                        <a href="#" data-tool="fillet">Скругление</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="menu-item dropdown-toggle">Размеры</button>
+                    <div class="dropdown-menu">
+                        <a href="#" data-tool="angular-dimension">Угловой размер</a>
+                        <a href="#" data-tool="diameter-dimension">Диаметральный/радиальный размер</a>
+                        <a href="#" data-tool="linear-dimension">Линейный размер</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="menu-item dropdown-toggle">Вставка</button>
+                    <div class="dropdown-menu">
+                        <a href="#" data-tool="sheet">Лист</a>
+                        <div class="submenu">
+                            <a href="#" data-format="A4-H">A4 Горизонтальный</a>
+                            <a href="#" data-format="A4-V">A4 Вертикальный</a>
+                            <a href="#" data-format="A3-H">A3 Горизонтальный</a>
+                            <a href="#" data-format="A3-V">A3 Вертикальный</a>
+                            <a href="#" data-format="A2-H">A2 Горизонтальный</a>
+                            <a href="#" data-format="A2-V">A2 Вертикальный</a>
+                            <a href="#" data-format="A1-H">A1 Горизонтальный</a>
+                            <a href="#" data-format="A1-V">A1 Вертикальный</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Панель инструментов -->
+        <div class="toolbar">
+            <div class="tool-group">
+                <button class="tool-btn" title="Новый файл">📄</button>
+                <button class="tool-btn" title="Открыть">📂</button>
+                <button class="tool-btn" title="Сохранить">💾</button>
+                <button class="tool-btn" title="Отменить">↶</button>
+                <button class="tool-btn" title="Повторить">↷</button>
+            </div>
+            
+            <div class="tool-group">
+                <button class="tool-btn" title="Приблизить">🔍+</button>
+                <button class="tool-btn" title="Отдалить">🔍-</button>
+                <button class="tool-btn" title="Сбросить масштаб">🔍⌂</button>
+                <button class="tool-btn" title="Панорамирование" data-tool="pan">✋</button>
+                <button class="tool-btn" title="Перемещение объектов" data-tool="move-object">✋</button>
+            </div>
+            
+            <div class="tool-group">
+                <button class="tool-btn" title="A4 Горизонтальный" data-format="A4-H">A4-H</button>
+                <button class="tool-btn" title="A4 Вертикальный" data-format="A4-V">A4-V</button>
+                <button class="tool-btn" title="A3 Горизонтальный" data-format="A3-H">A3-H</button>
+                <button class="tool-btn" title="A3 Вертикальный" data-format="A3-V">A3-V</button>
+                <button class="tool-btn" title="A2 Горизонтальный" data-format="A2-H">A2-H</button>
+                <button class="tool-btn" title="A2 Вертикальный" data-format="A2-V">A2-V</button>
+                <button class="tool-btn" title="A1 Горизонтальный" data-format="A1-H">A1-H</button>
+                <button class="tool-btn" title="A1 Вертикальный" data-format="A1-V">A1-V</button>
+            </div>
+            
+            <div class="tool-group">
+                <button class="tool-btn active" title="Линия" data-tool="line">📏</button>
+                <button class="tool-btn" title="Прямоугольник" data-tool="rectangle">⬜</button>
+                <button class="tool-btn" title="Круг" data-tool="circle">⭕</button>
+                <button class="tool-btn" title="Дуга" data-tool="arc">⌒</button>
+                <button class="tool-btn" title="Полилиния" data-tool="polyline">📐</button>
+                <button class="tool-btn" title="Текст" data-tool="text">T</button>
+                <button class="tool-btn" title="Размеры" data-tool="dimension">📏</button>
+                <button class="tool-btn" title="Выделить" data-tool="select">↖</button>
+                <button class="tool-btn" title="Переместить" data-tool="move">↔</button>
+                <button class="tool-btn" title="Повернуть" data-tool="rotate">🔄</button>
+                <button class="tool-btn" title="Зеркало" data-tool="mirror">🪞</button>
+                <button class="tool-btn" title="Обрезать" data-tool="trim">✂️</button>
+                <button class="tool-btn" title="Продлить" data-tool="extend">➡️</button>
+            </div>
+        </div>
+
+        <!-- Основная рабочая область -->
+        <div class="workspace">
+            <!-- Центральная область рисования -->
+            <div class="drawing-area">
+                <div class="canvas-container">
+                    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Панель свойств объекта -->
+        <div class="properties-panel" id="propertiesPanel" style="display: none;">
+            <div class="properties-content">
+                <div class="properties-header">
+                    <h3>Свойства объекта</h3>
+                    <button class="close-btn" id="closeProperties">×</button>
+                </div>
+                <div class="properties-body">
+                    <div class="property-group">
+                        <label>Длина:</label>
+                        <input type="number" id="objectLength" placeholder="0.00" step="0.01">
+                    </div>
+                    <div class="property-group">
+                        <label>Угол:</label>
+                        <input type="number" id="objectAngle" placeholder="0.00" step="0.01">
+                    </div>
+                    <div class="property-group">
+                        <label>Стиль:</label>
+                        <select id="objectStyle">
+                            <option value="Основная">Основная</option>
+                            <option value="Тонкая">Тонкая</option>
+                            <option value="Толстая">Толстая</option>
+                            <option value="Пунктирная">Пунктирная</option>
+                        </select>
+                    </div>
+                    <div class="property-group">
+                        <label>Толщина:</label>
+                        <input type="number" id="objectWidth" value="1" min="0.1" max="10" step="0.1">
+                    </div>
+                    <div class="property-actions">
+                        <button class="apply-btn" id="applyProperties">Применить</button>
+                        <button class="cancel-btn" id="cancelProperties">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="cad-script.js"></script>
+</body>
+</html>
