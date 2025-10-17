@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FREE CAD - Онлайн чертилка</title>
-    <link rel="stylesheet" href="cad-styles.css">
+    <link rel="stylesheet" href="assets/css/cad-styles.css">
 </head>
 <body>
     <div class="cad-container">
         <!-- Верхнее меню -->
         <header class="cad-header">
             <div class="logo-section">
-                <div class="logo">M</div>
-                <div class="logo-text">FREE CAD</div>
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <div class="logo-text">FREE CAD</div>
+                </a>
             </div>
             <nav class="main-menu">
                 <button class="menu-item">Файл</button>
@@ -167,8 +168,85 @@
             </div>
         </div>
 
+        <!-- Футер с дополнительными функциями -->
+        <footer class="cad-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Файл</h4>
+                    <div class="footer-buttons">
+                        <button class="footer-btn" id="exportPng" title="Экспорт в PNG">
+                            <span class="btn-icon">🖼️</span>
+                            <span class="btn-text">PNG</span>
+                        </button>
+                        <button class="footer-btn" id="exportPdf" title="Экспорт в PDF">
+                            <span class="btn-icon">📄</span>
+                            <span class="btn-text">PDF</span>
+                        </button>
+                        <button class="footer-btn" id="exportSvg" title="Экспорт в SVG">
+                            <span class="btn-icon">🎨</span>
+                            <span class="btn-text">SVG</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Инструменты</h4>
+                    <div class="footer-buttons">
+                        <button class="footer-btn" id="toggleGrid" title="Показать/скрыть сетку">
+                            <span class="btn-icon">⊞</span>
+                            <span class="btn-text">Сетка</span>
+                        </button>
+                        <button class="footer-btn" id="toggleSnap" title="Привязка к сетке">
+                            <span class="btn-icon">🧲</span>
+                            <span class="btn-text">Привязка</span>
+                        </button>
+                        <button class="footer-btn" id="clearCanvas" title="Очистить холст">
+                            <span class="btn-icon">🗑️</span>
+                            <span class="btn-text">Очистить</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <div class="footer-buttons">
+                        <button class="footer-btn" id="fitToScreen" title="Подогнать к экрану">
+                            <span class="btn-icon">🔍</span>
+                            <span class="btn-text">В экран</span>
+                        </button>
+                        <button class="footer-btn" id="centerView" title="Центрировать вид">
+                            <span class="btn-icon">🎯</span>
+                            <span class="btn-text">Центр</span>
+                        </button>
+                        <button class="footer-btn" id="goHome" title="На главную">
+                            <span class="btn-icon">🏠</span>
+                            <span class="btn-text">Домой</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Статус</h4>
+                    <div class="status-info">
+                        <span class="status-item">
+                            <span class="status-label">Инструмент:</span>
+                            <span class="status-value" id="currentToolStatus">Линия</span>
+                        </span>
+                        <span class="status-item">
+                            <span class="status-label">Масштаб:</span>
+                            <span class="status-value" id="zoomStatus">100%</span>
+                        </span>
+                        <span class="status-item">
+                            <span class="status-label">Объектов:</span>
+                            <span class="status-value" id="objectsCount">0</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
     </div>
 
-    <script src="cad-script.js"></script>
+    <script src="assets/js/cad-script.js"></script>
 </body>
 </html>

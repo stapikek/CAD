@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь - FREE CAD</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        // Предотвращение мигания темы при загрузке
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <h1>FREE CAD</h1>
+                </a>
+            </div>
+            <div class="contact-info">
+                <span class="phone">+7 (XXX) XXX-XX-XX</span>
+                <span class="email">E-mail: info@freecad.com</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="index.html#methods">Возможности</a></li>
+                <li><a href="index.html#online">Платформа</a></li>
+                <li><a href="index.html#programs">Сравнение</a></li>
+                <li><a href="index.html#cad-app">CAD-приложение</a></li>
+                <li><a href="index.html#features">Функции</a></li>
+                <li><a href="index.html#support">Поддержка</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="ask-question-btn" onclick="openContactForm()">ОБРАТНАЯ СВЯЗЬ</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="contact-section">
+                <h1>💬 Обратная связь</h1>
+                <p class="intro-text">
+                    Мы ценим ваше мнение! Поделитесь своими предложениями, вопросами или отзывами о FREE CAD.
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h2>📞 Способы связи</h2>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <h3>📧 Email</h3>
+                                <p><strong>Общие вопросы:</strong> <a href="mailto:info@freecad.com">info@freecad.com</a></p>
+                                <p><strong>Техническая поддержка:</strong> <a href="mailto:support@freecad.com">support@freecad.com</a></p>
+                                <p><strong>Предложения:</strong> <a href="mailto:feedback@freecad.com">feedback@freecad.com</a></p>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <h3>📱 Телефон</h3>
+                                <p><strong>Горячая линия:</strong> +7 (XXX) XXX-XX-XX</p>
+                                <p><strong>Время работы:</strong> Пн-Пт, 9:00-18:00 (МСК)</p>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <h3>🌐 Социальные сети</h3>
+                                <p><strong>Telegram:</strong> @freecad_support</p>
+                                <p><strong>VK:</strong> vk.com/freecad</p>
+                                <p><strong>YouTube:</strong> youtube.com/freecad</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-card">
+                        <h2>📝 Форма обратной связи</h2>
+                        
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="contactName">Ваше имя *</label>
+                                <input type="text" id="contactName" name="name" required placeholder="Введите ваше имя">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">Email *</label>
+                                <input type="email" id="contactEmail" name="email" required placeholder="your@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactPhone">Телефон</label>
+                                <input type="tel" id="contactPhone" name="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactSubject">Тема обращения *</label>
+                                <select id="contactSubject" name="subject" required>
+                                    <option value="">Выберите тему</option>
+                                    <option value="question">Вопрос по использованию</option>
+                                    <option value="feature">Предложение новой функции</option>
+                                    <option value="improvement">Предложение по улучшению</option>
+                                    <option value="partnership">Партнерство</option>
+                                    <option value="press">Пресса и СМИ</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactPriority">Приоритет</label>
+                                <select id="contactPriority" name="priority">
+                                    <option value="low">Низкий</option>
+                                    <option value="normal" selected>Обычный</option>
+                                    <option value="high">Высокий</option>
+                                    <option value="urgent">Срочный</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Сообщение *</label>
+                                <textarea id="contactMessage" name="message" rows="6" required placeholder="Опишите ваш вопрос или предложение подробно..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contactNewsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Подписаться на новости и обновления FREE CAD
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contactAgreement" name="agreement" required>
+                                    <span class="checkmark"></span>
+                                    Я согласен с <a href="#privacy" onclick="showPrivacyPolicy()">политикой конфиденциальности</a> *
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="clearForm()">Очистить</button>
+                                <button type="submit" class="btn-primary">Отправить сообщение</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>❓ Часто задаваемые вопросы</h2>
+                    
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>Как долго ждать ответа?</h3>
+                            <p>Мы отвечаем на все сообщения в течение 24 часов в рабочие дни. Срочные вопросы рассматриваются в приоритетном порядке.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3>Можно ли получить техническую поддержку?</h3>
+                            <p>Да! Наша команда поддержки поможет решить любые технические вопросы. Обращайтесь по email support@freecad.com</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3>Принимаете ли вы предложения по улучшению?</h3>
+                            <p>Конечно! Мы активно развиваем продукт и ценим ваши идеи. Лучшие предложения реализуются в следующих версиях.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h3>Как стать партнером?</h3>
+                            <p>Для обсуждения партнерских программ обращайтесь на email info@freecad.com с пометкой "Партнерство".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="response-times">
+                    <h2>⏰ Время ответа</h2>
+                    <div class="response-grid">
+                        <div class="response-item">
+                            <h3>🚨 Срочные вопросы</h3>
+                            <p><strong>Время ответа:</strong> До 2 часов</p>
+                            <p><strong>Примеры:</strong> Критические ошибки, проблемы с доступом</p>
+                        </div>
+                        <div class="response-item">
+                            <h3>⚡ Техническая поддержка</h3>
+                            <p><strong>Время ответа:</strong> До 4 часов</p>
+                            <p><strong>Примеры:</strong> Вопросы по использованию, баги</p>
+                        </div>
+                        <div class="response-item">
+                            <h3>💡 Предложения</h3>
+                            <p><strong>Время ответа:</strong> До 24 часов</p>
+                            <p><strong>Примеры:</strong> Новые функции, улучшения</p>
+                        </div>
+                        <div class="response-item">
+                            <h3>📞 Общие вопросы</h3>
+                            <p><strong>Время ответа:</strong> До 48 часов</p>
+                            <p><strong>Примеры:</strong> Информация о продукте, партнерство</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="documentation.html">📚 Документация</a>
+                    <a href="contact.html">💬 Обратная связь</a>
+                    <a href="bug-report.html">🐛 Сообщить об ошибке</a>
+                    <a href="cad.html">🎨 CAD-приложение</a>
+                </div>
+                <div class="back-to-top" id="backToTop">
+                    <a href="#top">⬆️ Наверх</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FREE CAD. Все права защищены.</p>
+                <p>Бесплатная онлайн-платформа для создания технических чертежей</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно политики конфиденциальности -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Политика конфиденциальности</h3>
+                <span class="close" onclick="closePrivacyModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>Сбор и использование информации</h4>
+                <p>Мы собираем только ту информацию, которую вы добровольно предоставляете через формы обратной связи. Эта информация используется исключительно для ответа на ваши запросы и улучшения наших услуг.</p>
+                
+                <h4>Защита данных</h4>
+                <p>Ваши персональные данные защищены и не передаются третьим лицам без вашего согласия. Мы используем современные методы шифрования для защиты информации.</p>
+                
+                <h4>Cookies</h4>
+                <p>Наш сайт использует cookies для улучшения пользовательского опыта. Вы можете отключить cookies в настройках браузера.</p>
+                
+                <h4>Контакты</h4>
+                <p>По вопросам конфиденциальности обращайтесь на email: privacy@freecad.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка мобильного меню -->
+    <button id="mobileMenuBtn" class="mobile-menu-btn" onclick="openMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Мобильное меню -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Меню</h3>
+            <span class="mobile-menu-close" onclick="closeMobileMenu()">&times;</span>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li><a href="index.html" onclick="closeMobileMenu()">Главная</a></li>
+            <li><a href="index.html#методы" onclick="closeMobileMenu()">Возможности</a></li>
+            <li><a href="index.html#онлайн" onclick="closeMobileMenu()">Платформа</a></li>
+            <li><a href="index.html#cad-app" onclick="closeMobileMenu()">CAD-приложение</a></li>
+            <li><a href="index.html#features" onclick="closeMobileMenu()">Функции</a></li>
+            <li><a href="index.html#support" onclick="closeMobileMenu()">Поддержка</a></li>
+            <li><button class="ask-question-btn-mobile" onclick="window.location.href='documentation.html'; closeMobileMenu();">ДОКУМЕНТАЦИЯ</button></li>
+        </ul>
+    </div>
+
+    <script>
+        // Обработка формы обратной связи
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const data = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        subject: formData.get('subject'),
+                        priority: formData.get('priority'),
+                        message: formData.get('message'),
+                        newsletter: formData.get('newsletter') === 'on',
+                        agreement: formData.get('agreement') === 'on'
+                    };
+                    
+                    // Имитация отправки данных
+                    showNotification('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+                    
+                    // В реальном приложении здесь был бы запрос на сервер
+                    console.log('Отправленные данные:', data);
+                    
+                    // Очищаем форму
+                    clearForm();
+                });
+            }
+        });
+
+        function clearForm() {
+            document.getElementById('contactForm').reset();
+        }
+
+        // Функция показа уведомлений
+        function showNotification(message) {
+            // Создаем элемент уведомления
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #27ae60, #2ecc71);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-weight: bold;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 400px;
+                word-wrap: break-word;
+            `;
+
+            document.body.appendChild(notification);
+
+            // Анимация появления
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Автоматическое скрытие через 5 секунд
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        function showPrivacyPolicy() {
+            const modal = document.getElementById('privacyModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Закрытие модального окна при клике вне его
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('privacyModal');
+            if (e.target === modal) {
+                closePrivacyModal();
+            }
+        });
+    </script>
+
+</body>
+</html>

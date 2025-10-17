@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сообщить об ошибке - FREE CAD</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        // Предотвращение мигания темы при загрузке
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <h1>FREE CAD</h1>
+                </a>
+            </div>
+            <div class="contact-info">
+                <span class="phone">+7 (XXX) XXX-XX-XX</span>
+                <span class="email">E-mail: info@freecad.com</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="index.html#methods">Возможности</a></li>
+                <li><a href="index.html#online">Платформа</a></li>
+                <li><a href="index.html#programs">Сравнение</a></li>
+                <li><a href="index.html#cad-app">CAD-приложение</a></li>
+                <li><a href="index.html#features">Функции</a></li>
+                <li><a href="index.html#support">Поддержка</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="ask-question-btn" onclick="openContactForm()">ОБРАТНАЯ СВЯЗЬ</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="bug-report-section">
+                <h1>🐛 Сообщить об ошибке</h1>
+                <p class="intro-text">
+                    Помогите нам улучшить FREE CAD! Сообщите об ошибке, и мы исправим её как можно скорее.
+                </p>
+
+                <div class="bug-info">
+                    <div class="bug-tips">
+                        <h2>💡 Перед отправкой отчета</h2>
+                        <div class="tips-grid">
+                            <div class="tip-item">
+                                <h3>🔄 Попробуйте обновить страницу</h3>
+                                <p>Многие временные проблемы решаются простым обновлением страницы (F5 или Ctrl+R)</p>
+                            </div>
+                            <div class="tip-item">
+                                <h3>🧹 Очистите кэш браузера</h3>
+                                <p>Старые данные могут вызывать конфликты. Очистите кэш и cookies</p>
+                            </div>
+                            <div class="tip-item">
+                                <h3>🌐 Проверьте соединение</h3>
+                                <p>Убедитесь, что у вас стабильное интернет-соединение</p>
+                            </div>
+                            <div class="tip-item">
+                                <h3>📱 Попробуйте другой браузер</h3>
+                                <p>Проверьте, воспроизводится ли ошибка в другом браузере</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bug-form-container">
+                        <h2>📝 Форма отчета об ошибке</h2>
+                        
+                        <form id="bugReportForm" class="bug-report-form">
+                            <div class="form-section">
+                                <h3>👤 Ваши данные</h3>
+                                
+                                <div class="form-group">
+                                    <label for="bugName">Ваше имя *</label>
+                                    <input type="text" id="bugName" name="name" required placeholder="Введите ваше имя">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugEmail">Email *</label>
+                                    <input type="email" id="bugEmail" name="email" required placeholder="your@email.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugPhone">Телефон</label>
+                                    <input type="tel" id="bugPhone" name="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>🐛 Описание ошибки</h3>
+                                
+                                <div class="form-group">
+                                    <label for="bugTitle">Краткое описание ошибки *</label>
+                                    <input type="text" id="bugTitle" name="title" required placeholder="Например: Приложение не сохраняет файл">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugType">Тип ошибки *</label>
+                                    <select id="bugType" name="type" required>
+                                        <option value="">Выберите тип ошибки</option>
+                                        <option value="crash">Критическая ошибка (приложение не работает)</option>
+                                        <option value="functionality">Ошибка функциональности</option>
+                                        <option value="ui">Проблема с интерфейсом</option>
+                                        <option value="performance">Проблема производительности</option>
+                                        <option value="compatibility">Проблема совместимости</option>
+                                        <option value="data">Потеря данных</option>
+                                        <option value="other">Другое</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugSeverity">Серьезность ошибки *</label>
+                                    <select id="bugSeverity" name="severity" required>
+                                        <option value="">Выберите серьезность</option>
+                                        <option value="critical">Критическая (приложение не работает)</option>
+                                        <option value="high">Высокая (основная функция не работает)</option>
+                                        <option value="medium">Средняя (функция работает частично)</option>
+                                        <option value="low">Низкая (косметическая проблема)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugDescription">Подробное описание *</label>
+                                    <textarea id="bugDescription" name="description" rows="5" required placeholder="Опишите что именно произошло, что вы ожидали увидеть, и что произошло вместо этого..."></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugSteps">Шаги для воспроизведения *</label>
+                                    <textarea id="bugSteps" name="steps" rows="4" required placeholder="1. Откройте приложение&#10;2. Нажмите на кнопку...&#10;3. Выберите инструмент...&#10;4. Ошибка происходит здесь"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>💻 Техническая информация</h3>
+                                
+                                <div class="form-group">
+                                    <label for="bugBrowser">Браузер *</label>
+                                    <select id="bugBrowser" name="browser" required>
+                                        <option value="">Выберите браузер</option>
+                                        <option value="chrome">Google Chrome</option>
+                                        <option value="firefox">Mozilla Firefox</option>
+                                        <option value="safari">Safari</option>
+                                        <option value="edge">Microsoft Edge</option>
+                                        <option value="opera">Opera</option>
+                                        <option value="other">Другой</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugBrowserVersion">Версия браузера</label>
+                                    <input type="text" id="bugBrowserVersion" name="browserVersion" placeholder="Например: Chrome 120.0.6099.109">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugOS">Операционная система *</label>
+                                    <select id="bugOS" name="os" required>
+                                        <option value="">Выберите ОС</option>
+                                        <option value="windows">Windows</option>
+                                        <option value="macos">macOS</option>
+                                        <option value="linux">Linux</option>
+                                        <option value="android">Android</option>
+                                        <option value="ios">iOS</option>
+                                        <option value="other">Другая</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugResolution">Разрешение экрана</label>
+                                    <input type="text" id="bugResolution" name="resolution" placeholder="Например: 1920x1080">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugConsole">Сообщения в консоли браузера</label>
+                                    <textarea id="bugConsole" name="console" rows="3" placeholder="Скопируйте сюда ошибки из консоли браузера (F12 -> Console)"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>📎 Дополнительная информация</h3>
+                                
+                                <div class="form-group">
+                                    <label for="bugScreenshots">Скриншоты</label>
+                                    <input type="file" id="bugScreenshots" name="screenshots" multiple accept="image/*">
+                                    <small>Максимум 5 файлов, размер до 10MB каждый</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugFiles">Файлы проекта</label>
+                                    <input type="file" id="bugFiles" name="files" accept=".json">
+                                    <small>Прикрепите файл проекта (.json) если ошибка связана с конкретным чертежом</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugFrequency">Частота возникновения ошибки</label>
+                                    <select id="bugFrequency" name="frequency">
+                                        <option value="">Выберите частоту</option>
+                                        <option value="always">Всегда (100%)</option>
+                                        <option value="often">Часто (75-99%)</option>
+                                        <option value="sometimes">Иногда (25-74%)</option>
+                                        <option value="rarely">Редко (1-24%)</option>
+                                        <option value="once">Один раз</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugWorkaround">Временное решение</label>
+                                    <textarea id="bugWorkaround" name="workaround" rows="3" placeholder="Если вы нашли способ обойти проблему, опишите его здесь"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bugAdditional">Дополнительная информация</label>
+                                    <textarea id="bugAdditional" name="additional" rows="3" placeholder="Любая другая информация, которая может помочь в решении проблемы"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="bugNewsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Уведомить меня о статусе исправления ошибки
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="bugAgreement" name="agreement" required>
+                                    <span class="checkmark"></span>
+                                    Я согласен с <a href="#privacy" onclick="showPrivacyPolicy()">политикой конфиденциальности</a> *
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="clearBugForm()">Очистить форму</button>
+                                <button type="submit" class="btn-primary">Отправить отчет</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="bug-status">
+                    <h2>📊 Статус исправления ошибок</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <h3>🔴 Критические ошибки</h3>
+                            <p><strong>Время исправления:</strong> 1-3 дня</p>
+                            <p><strong>Приоритет:</strong> Максимальный</p>
+                        </div>
+                        <div class="status-item">
+                            <h3>🟠 Высокий приоритет</h3>
+                            <p><strong>Время исправления:</strong> 1-2 недели</p>
+                            <p><strong>Приоритет:</strong> Высокий</p>
+                        </div>
+                        <div class="status-item">
+                            <h3>🟡 Средний приоритет</h3>
+                            <p><strong>Время исправления:</strong> 2-4 недели</p>
+                            <p><strong>Приоритет:</strong> Средний</p>
+                        </div>
+                        <div class="status-item">
+                            <h3>🟢 Низкий приоритет</h3>
+                            <p><strong>Время исправления:</strong> 1-3 месяца</p>
+                            <p><strong>Приоритет:</strong> Низкий</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bug-tracking">
+                    <h2>🔍 Отслеживание ошибок</h2>
+                    <p>После отправки отчета вы получите номер тикета для отслеживания статуса исправления ошибки.</p>
+                    
+                    <div class="tracking-info">
+                        <div class="tracking-item">
+                            <h3>📧 Email уведомления</h3>
+                            <p>Мы будем уведомлять вас о статусе исправления ошибки</p>
+                        </div>
+                        <div class="tracking-item">
+                            <h3>🎫 Номер тикета</h3>
+                            <p>Используйте номер тикета для связи с поддержкой</p>
+                        </div>
+                        <div class="tracking-item">
+                            <h3>📱 SMS уведомления</h3>
+                            <p>Для критических ошибок доступны SMS уведомления</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="documentation.html">📚 Документация</a>
+                    <a href="contact.html">💬 Обратная связь</a>
+                    <a href="bug-report.html">🐛 Сообщить об ошибке</a>
+                    <a href="cad.html">🎨 CAD-приложение</a>
+                </div>
+                <div class="back-to-top" id="backToTop">
+                    <a href="#top">⬆️ Наверх</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FREE CAD. Все права защищены.</p>
+                <p>Бесплатная онлайн-платформа для создания технических чертежей</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно политики конфиденциальности -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Политика конфиденциальности</h3>
+                <span class="close" onclick="closePrivacyModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>Сбор и использование информации</h4>
+                <p>Мы собираем только ту информацию, которую вы добровольно предоставляете через формы обратной связи. Эта информация используется исключительно для ответа на ваши запросы и улучшения наших услуг.</p>
+                
+                <h4>Защита данных</h4>
+                <p>Ваши персональные данные защищены и не передаются третьим лицам без вашего согласия. Мы используем современные методы шифрования для защиты информации.</p>
+                
+                <h4>Cookies</h4>
+                <p>Наш сайт использует cookies для улучшения пользовательского опыта. Вы можете отключить cookies в настройках браузера.</p>
+                
+                <h4>Контакты</h4>
+                <p>По вопросам конфиденциальности обращайтесь на email: privacy@freecad.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка мобильного меню -->
+    <button id="mobileMenuBtn" class="mobile-menu-btn" onclick="openMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Мобильное меню -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Меню</h3>
+            <span class="mobile-menu-close" onclick="closeMobileMenu()">&times;</span>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li><a href="index.html" onclick="closeMobileMenu()">Главная</a></li>
+            <li><a href="index.html#methods" onclick="closeMobileMenu()">Возможности</a></li>
+            <li><a href="index.html#online" onclick="closeMobileMenu()">Платформа</a></li>
+            <li><a href="index.html#cad-app" onclick="closeMobileMenu()">CAD-приложение</a></li>
+            <li><a href="index.html#features" onclick="closeMobileMenu()">Функции</a></li>
+            <li><a href="index.html#support" onclick="closeMobileMenu()">Поддержка</a></li>
+            <li><button class="ask-question-btn-mobile" onclick="window.location.href='contact.html'; closeMobileMenu();">ОБРАТНАЯ СВЯЗЬ</button></li>
+        </ul>
+    </div>
+
+    <script>
+        // Обработка формы отчета об ошибке
+        document.addEventListener('DOMContentLoaded', function() {
+            const bugForm = document.getElementById('bugReportForm');
+            if (bugForm) {
+                bugForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const data = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        title: formData.get('title'),
+                        type: formData.get('type'),
+                        severity: formData.get('severity'),
+                        description: formData.get('description'),
+                        steps: formData.get('steps'),
+                        browser: formData.get('browser'),
+                        browserVersion: formData.get('browserVersion'),
+                        os: formData.get('os'),
+                        resolution: formData.get('resolution'),
+                        console: formData.get('console'),
+                        frequency: formData.get('frequency'),
+                        workaround: formData.get('workaround'),
+                        additional: formData.get('additional'),
+                        newsletter: formData.get('newsletter') === 'on',
+                        agreement: formData.get('agreement') === 'on'
+                    };
+                    
+                    // Генерируем номер тикета
+                    const ticketNumber = 'BUG-' + Date.now().toString().slice(-6);
+                    
+                    // Имитация отправки данных
+                    showNotification(`Отчет об ошибке отправлен! Номер тикета: ${ticketNumber}. Мы свяжемся с вами в ближайшее время.`);
+                    
+                    // В реальном приложении здесь был бы запрос на сервер
+                    console.log('Отправленные данные:', data);
+                    console.log('Номер тикета:', ticketNumber);
+                    
+                    // Очищаем форму
+                    clearBugForm();
+                });
+            }
+        });
+
+        function clearBugForm() {
+            document.getElementById('bugReportForm').reset();
+        }
+
+        // Функция показа уведомлений
+        function showNotification(message) {
+            // Создаем элемент уведомления
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #27ae60, #2ecc71);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-weight: bold;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 400px;
+                word-wrap: break-word;
+            `;
+
+            document.body.appendChild(notification);
+
+            // Анимация появления
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Автоматическое скрытие через 5 секунд
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        function showPrivacyPolicy() {
+            const modal = document.getElementById('privacyModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Закрытие модального окна при клике вне его
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('privacyModal');
+            if (e.target === modal) {
+                closePrivacyModal();
+            }
+        });
+
+        // Автоматическое заполнение информации о браузере
+        document.addEventListener('DOMContentLoaded', function() {
+            const browserInfo = getBrowserInfo();
+            const osInfo = getOSInfo();
+            
+            if (browserInfo.browser) {
+                const browserSelect = document.getElementById('bugBrowser');
+                if (browserSelect) {
+                    browserSelect.value = browserInfo.browser;
+                }
+            }
+            
+            if (browserInfo.version) {
+                const versionInput = document.getElementById('bugBrowserVersion');
+                if (versionInput) {
+                    versionInput.value = browserInfo.version;
+                }
+            }
+            
+            if (osInfo) {
+                const osSelect = document.getElementById('bugOS');
+                if (osSelect) {
+                    osSelect.value = osInfo;
+                }
+            }
+            
+            const resolutionInput = document.getElementById('bugResolution');
+            if (resolutionInput) {
+                resolutionInput.value = screen.width + 'x' + screen.height;
+            }
+        });
+
+        function getBrowserInfo() {
+            const userAgent = navigator.userAgent;
+            let browser = '';
+            let version = '';
+            
+            if (userAgent.indexOf('Chrome') > -1) {
+                browser = 'chrome';
+                version = 'Chrome ' + userAgent.match(/Chrome\/(\d+)/)[1];
+            } else if (userAgent.indexOf('Firefox') > -1) {
+                browser = 'firefox';
+                version = 'Firefox ' + userAgent.match(/Firefox\/(\d+)/)[1];
+            } else if (userAgent.indexOf('Safari') > -1) {
+                browser = 'safari';
+                version = 'Safari ' + userAgent.match(/Version\/(\d+)/)[1];
+            } else if (userAgent.indexOf('Edge') > -1) {
+                browser = 'edge';
+                version = 'Edge ' + userAgent.match(/Edge\/(\d+)/)[1];
+            } else if (userAgent.indexOf('Opera') > -1) {
+                browser = 'opera';
+                version = 'Opera ' + userAgent.match(/Opera\/(\d+)/)[1];
+            }
+            
+            return { browser, version };
+        }
+
+        function getOSInfo() {
+            const userAgent = navigator.userAgent;
+            
+            if (userAgent.indexOf('Windows') > -1) return 'windows';
+            if (userAgent.indexOf('Mac') > -1) return 'macos';
+            if (userAgent.indexOf('Linux') > -1) return 'linux';
+            if (userAgent.indexOf('Android') > -1) return 'android';
+            if (userAgent.indexOf('iOS') > -1) return 'ios';
+            
+            return 'other';
+        }
+    </script>
+
+    <script>
+        // Обработка навигации для страницы bug-report
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обработка кликов по навигационным ссылкам
+            const navLinks = document.querySelectorAll('.nav-menu a, .footer-links a, .mobile-nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Если ссылка ведет на другую страницу, не предотвращаем стандартное поведение
+                    if (href.includes('index.html') || href.includes('contact.html') || href.includes('documentation.html') || href.includes('cad.html')) {
+                        return;
+                    }
+                    
+                    // Если это якорная ссылка на текущей странице
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Кнопка "Наверх"
+            const backToTopBtn = document.getElementById('backToTop');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.style.display = 'block';
+                    } else {
+                        backToTopBtn.style.display = 'none';
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Анимация появления секций при прокрутке
+            const sections = document.querySelectorAll('.bug-report-section, .bug-tips, .bug-form, .bug-status');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+
+        // Функции для мобильного меню (если они не определены в script.js)
+        function openMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.style.transform = 'translateX(0)';
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.style.transform = 'translateX(100%)';
+            }
+        }
+
+        // Обработка клика вне мобильного меню
+        document.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (mobileMenu && mobileMenuBtn && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Обработка клавиши Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Функция переключения темы
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Обновляем иконку
+            const icon = document.querySelector('.theme-icon');
+            if (icon) {
+                icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            }
+        }
+
+        // Инициализация темы
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            const icon = document.querySelector('.theme-icon');
+            if (icon) {
+                icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            }
+        }
+
+        // Запуск при загрузке
+        initTheme();
+
+        // Отслеживание изменений системной темы
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                initTheme();
+            }
+        });
+    </script>
+
+</body>
+</html>
